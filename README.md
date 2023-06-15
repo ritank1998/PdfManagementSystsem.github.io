@@ -1,4 +1,4 @@
-                                                               #DOCUMENTATION
+#DOCUMENTATION
 
 # PDF-MANAGEMENT_SYSTEM
 ## Technology Used
@@ -13,7 +13,7 @@
 # Requirments
 ### - Npm - Visual Studio Code 
 
-                                                                  # Architecture
+  # Architecture
 ### - This web app is used to store the PDF files , Here the files can be shared by creating unique sharing links . This App is built completeley using JavaScript and Google Firebase is used as the Data Storage & Database to store the user Data and files .
 ### This App consists of a Signup landing page where the user can enter all the details as required and create the account . The signup consists of all the validation which are required to keep a account safe , Like Validations for Passwords , Validation for Matching Password and Conform Password , Email address Validation & also Validation for Empty required Fields . 
 ### Script files for Signup landing page and Javascript are named as index.html and script.js.
@@ -38,7 +38,13 @@
 <img width="299" alt="image" src="https://github.com/ritank1998/PdfManagementSystsem.github.io/assets/68276497/d6e28b01-8d73-466a-a754-b55d9dc4ea06">
 <img width="392" alt="image" src="https://github.com/ritank1998/PdfManagementSystsem.github.io/assets/68276497/dbcd554d-23a0-4088-a385-4c3e8aa6ca5b">
 
-
+# How To run
+### Download the Zip file , Then extract the files , Open the code editor then
+## run command npm init
+## npm install es6-module-loader
+## npm install lite-server
+## In the package.json file , In the script object add "Dev" : "lite-server"
+# Hit npm run dev to start the application .
 
 
 
