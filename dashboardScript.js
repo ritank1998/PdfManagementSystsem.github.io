@@ -355,7 +355,7 @@ async function getComment() {
 
     docssnap.forEach(doc => {
       console.log(doc.data());
-      document.getElementById('mycomment').innerHTML = "i"+" "+doc.data().Mycomment[2]
+      document.getElementById('mycomment').innerHTML = "i"+" "+doc.data().Mycomment
       
     })
 }     
