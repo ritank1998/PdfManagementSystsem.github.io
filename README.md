@@ -42,11 +42,11 @@
 
 # How To run
 ### Download the Zip file , Then extract the files , Open the code editor then
-## run command npm init
-## npm install es6-module-loader
-## npm install lite-server
-## In the package.json file , In the script object add "Dev" : "lite-server"
-# Hit npm run dev to start the application .
+## - run command npm init
+## - npm install es6-module-loader
+## - npm install lite-server
+## - In the package.json file , In the script object add "Dev" : "lite-server"
+## - Hit npm run dev to start the application .
 
 
 
