@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=devicewidth,initial-scale=1.0">
+        <title>
+            pdf management dashboard
+        </title>
+        <style>
+            img{
+                     height: 200px;
+                     width: 200px;
+                     border: black;
+            }
+        </style>
+    </head>
+    <body>
+                 <label>Image Name</label><input type="text" id="nameBox"><label id="extlab"></label><br><br>
+                 <img id="myImg"><label id="upProgress"></label><br><br>
+
+                 <button id="selBtn" onclick="Btn()">Select Image</button>
+                 <button id="uploadBtn">Upload Image</button>
+                 <button id="downBtn">Download Image</button>
+
+
+                 <script type="module">
+                    // Import the functions you need from the SDKs you need
+                    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+                    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+                    // TODO: Add SDKs for Firebase products that you want to use
+                    // https://firebase.google.com/docs/web/setup#available-libraries
+                  
+                    // Your web app's Firebase configuration
+                    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+                    const firebaseConfig = {
+                      apiKey: "AIzaSyCpNe3oJxG6U9GmyDHbqPXzztBX0tcwP_o",
+                      authDomain: "assignment-4e13f.firebaseapp.com",
+                      databaseURL: "https://assignment-4e13f-default-rtdb.firebaseio.com",
+                      projectId: "assignment-4e13f",
+                      storageBucket: "assignment-4e13f.appspot.com",
+                      messagingSenderId: "1060037765521",
+                      appId: "1:1060037765521:web:b1d8f8264e8a76a512d230",
+                      measurementId: "G-XTVEZ8T3TH"
+                    };
+                  
+                    // Initialize Firebase
+                    const app = initializeApp(firebaseConfig);
+                    const analytics = getAnalytics(app);
+
+
+                    import {getStorage , ref as sRef , uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js"
+                  
+                     const storage = getStorage()
+                    
+                     var files = []
+                     var reader = new FileReader()
+
+                     var nameBox = document.getElementById("nameBox")
+                     var extlab = document.getElementById("extlab")
+                     var myImg = document.getElementById("myImg")
+                     var progLab = document.getElementById("upProgress")
+                     var selBtn = document.getElementById("selBtn")
+                     var upBtn = document.getElementById("upoadBtn")
+                     var DownBtn = document.getElementById("downBtn")
+
+                     var input = document.createElement('input');
+                     input.type = 'file'
+
+                     input.onchange = e =>{
+                        files = e.target.files
+
+                        var extension = GetFileExt(files[0])
+                        var name = GetFileName(files[0])
+
+
+                        nameBox.value = name
+                        extlab.innerHTML = extension
+
+                        reader.readAsDataURL(files[0])
+                     }
+                  
+                    reader.onload = function(){
+                        myImg.src = reader.result
+                    }
+                  
+                  
+                  selBtn.onclick = function(){
+                    input.click();
+                  }
+                  
+                  function GetFileExt(file){
+                    var temp = file.name.split('.')
+                    var ext = temp.slice((temp.length-1),(temp.length))
+                    return '.'+ext[0]
+                  }
+
+                  function GetFileName(file){
+                    var temp = file.name.split('.')
+                    var fname = temp.slice(0,-1).join('.')
+                    return fname
+                  }
+                  
+                  /**upload method**/
+          
+                async function uploadProcess(){
+                    var fileToupload = files[0]
+
+                    var ImgName = nameBox.value + extlab.innerHTML
+
+                    const metadata = {
+                        contentType : fileToupload.type
+                    }
+
+                    const StorageRef = sRef(storage , "files/" + ImgName)
+
+                    const uploadTask = uploadBytesResumable(StorageRef , fileToupload , metadata)
+
+                    uploadTask.on('state-changed' , (snapshot)=>{
+                        var progress = (snapshot.bytesTransferred / snapshot.totalBytes)*100
+
+                        progLab.innerHTML = "upload" + progress + "%"
+                    }),
+                    (error)=>{
+                        alert("Image Not Uploaded")
+                    },
+                    ()=>{
+                        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
+                            console.log(downloadURL)
+                        })
+                    }
+         
+                }
+            
+                /**window.onload = function(){ 
+    // your code     
+    upBtn.onclick = uploadProcess 
+                     };**/
+                    
+                      
+                  
+                  </script>
+    </body>
+</html>

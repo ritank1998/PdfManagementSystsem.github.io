@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="dashboard.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <title>
+                    Pdf Management 
+        </title>
+        
+    </head>
+    <script src="dashboardScript.js" type="module"></script>
+    <script src="loginScript.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <body>
+
+        <div class="topnav" id="myTopnav">
+            <a  class="active" id="logout">Logout</a>
+            <a class="active" id="up_pdf">Upload Pdf</a>
+            <a class="active" id="share">Share Pdf</a>
+            <a class="active" id="name" onclick="window.location.reload()">Home</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+</div>
+            
+          </div>
+          <div class="CustomTexts"><label>File</label><input type="text" id="nameBox"><label id="extlab"></label></div><br><br>
+          <input id="myImg" hidden="hidden"><label id="upProgress"></label><br><br>
+         <div class="container-fluid" id="btns">
+          <input type="file" id="MyFile" hidden="hidden">
+          <button id="selBtn">Select File</button>
+          <button id="uploadBtn">Upload File</button>
+          <button id="downBtn" hidden="hidden">Download File</button>
+          <button id="options">See My Files</button>
+        </div>
+
+       <div id="container-fluid">
+      <input type="checkbox" name="pfile"> <label id="myfilesOnServer" for="pfile"></label></input>
+      </div>
+        
+      <div class="container">
+        <h4 class="mt-3 text-center border-bottom pb-2">Comments</h4>
+        <form id="comments">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input id="name" name="name" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Write a Comment</label>
+                <textarea id="comment" name="comment" class="form-control"></textarea>
+            </div>
+            <button class="btn btn-outline-primary" id="postcomt">Post Comment</button>
+            
+        </form>
+    </div>
+    <div class="form-group">
+      <label for="mycomment">Previous Comment:</label>
+      <textarea class="form-control" rows="5" id="mycomment"></textarea>
+    </div>
+    <form id="delete">
+      <!--<label for="myid">Document id:</label>-->
+      <!--<input type="text" name="myid" required>-->
+      <button class="btn btn-outline-primary" id="delcomment">Read Previous Comments</button>
+  </form>
+          
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</html>
